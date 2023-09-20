@@ -1,0 +1,885 @@
+
+
+  {
+    "id": 100,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+            "Could you tell me a bit more about why you started smoking in the first place?"
+        ]
+      }
+    ],
+    "intents": [
+      [
+        [
+          "intent_clf",
+          "params.smoking.firstPlace"
+        ]
+      ]
+    ],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            "peer",
+            "=="
+          ]
+        ],
+        "text": [
+          "Thanks. It sounds like smoking was something that connected you with your social group, and it's not uncommon for people to start smoking as a social activity to fit in or have a sense of belonging. "
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            "norm",
+            "=="
+          ]
+        ],
+        "text": [
+          "Thanks. It sounds like smoking was a normal part of the environment around you, and it's understandable that you picked up the habit."
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            "stress",
+            "=="
+          ]
+        ],
+        "text": [
+          "Thanks. It sounds like smoking was a way for you to cope with stress and feel some relief at the time. That's understandable, and many people turn to smoking as a way to deal with difficult emotions."
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            "curiosity",
+            "=="
+          ]
+        ],
+        "text": [
+          "Thanks. It's not uncommon for people to try smoking out of curiosity, and sometimes that goes a long way."
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            "other intents",
+            "=="
+          ]
+        ],
+        "text": [
+          "Thanks. It sounds like smoking has been a part of your life for a while."
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            null,
+            "=="
+          ]
+        ],
+        "text": [
+          "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            "yes",
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          9020
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            "no",
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          9060
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.smoking.firstPlace",
+            null,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          9010
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+  {
+    "id": 101,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+          "That being said, it's great that you're here today to explore with me your relationship with smoking and any changes you want to make. To help us understand where you stand now, shall we continue and talk about your smoking habit?"
+        ]
+      }
+    ],
+    "intents": [
+      [
+        [
+          "yes_no",
+          "params.talkAbout.smokingHabit"
+        ]
+      ]
+    ],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [
+          [
+            "params.talkAbout.smokingHabit",
+            "yes",
+            "=="
+          ]
+        ],
+        "text": [
+          ""
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.talkAbout.smokingHabit",
+            "no",
+            "=="
+          ]
+        ],
+        "text": [
+          "That's alright, we can always revisit this when you'd like to! Since you're here today, I'm wodering what your ideas are about quitting"
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.talkAbout.smokingHabit",
+            null,
+            "=="
+          ]
+        ],
+        "text": [
+          "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [
+          [
+            "params.talkAbout.smokingHabit",
+            "yes",
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          5603
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.talkAbout.smokingHabit",
+            "no",
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          102
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.talkAbout.smokingHabit",
+            null,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          101
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+  {
+    "id": 102,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+            "Are you thinking about quitting within the next 6 months?"
+        ]
+      }
+    ],
+    "intents": [
+      [
+        [
+          "yes_no",
+          "params.quitting.nextSixMonths"
+        ]
+      ]
+    ],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [
+          [
+            "params.quitting.nextSixMonths",
+            "yes",
+            "=="
+          ]
+        ],
+        "text": [
+          "It's great that you've made up your mind to do so! "
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.quitting.nextSixMonths",
+            "no",
+            "=="
+          ]
+        ],
+        "text": [
+            "That's okay if you are not ready. It's totally up to you"
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.quitting.nextSixMonths",
+            null,
+            "=="
+          ]
+        ],
+        "text": [
+          "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [
+          [
+            "params.quitting.nextSixMonths",
+            "yes",
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          5610
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.quitting.nextSixMonths",
+            "no",
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          5611
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.quitting.nextSixMonths",
+            null,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          101
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+  {
+    "id": 103,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+            "Earlier you also told me why you started smoking in the first place. Now, knowing that you started [as a way to socialize / as a way to cope with stress and negative emotions / following the social norm around you / out of curiosity] and the reasons why you're considering quitting, how do you feel about your relationship with smoking now? "   ]
+      }
+    ],
+    "intents": [
+      [
+        [
+          "intent_quitting",
+          "params.smoking.relationship"
+        ]
+      ]
+    ],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [
+          [
+             "params.smoking.relationship",
+            "pro smoking",
+            "=="
+          ]
+        ],
+        "text": [
+          "Thanks for sharing with me! It seems that it's hard to give up the good feelings smoking brings to you. It's alright if you're not ready yet, but it's great that you also have concerns about [your health / your finance / your social relations / how smoking can impact your life in the long run]. My door is always open whenever you want to revisit this!"
+         ]
+      },
+      {
+        "conditions": [
+          [
+             "params.smoking.relationship",
+            "pro quitting",
+            "=="
+          ]
+        ],
+        "text": [
+          "Thanks for sharing with me! Great that you're feeling positive about quitting smoking. I'm happy to explore together with you the best approach to quit!"
+        ]
+      },
+      {
+        "conditions": [
+          [
+             "params.smoking.relationship",
+            "ambivalence",
+            "=="
+          ]
+        ],
+        "text": [
+            "Thanks for sharing with me. It's common that you have mixed feelings towards smoking, and it's great that you're considering quitting for [your health / your finance / your social relations / how smoking can impact your life in the long run]. I'm happy to explore with you your relationship with quitting and find the best approach to do so!"
+        ]
+      },
+
+      {
+        "conditions": [
+          [
+             "params.smoking.relationship",
+            null,
+            "=="
+          ]
+        ],
+        "text": [
+          "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [
+          [
+             "params.smoking.relationship",
+            "yes",
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          zz
+        ]
+      },
+      {
+        "conditions": [
+          [
+             "params.smoking.relationship",
+            "no",
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          zz
+        ]
+      },
+      {
+        "conditions": [
+          [
+             "params.smoking.relationship",
+            null,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          9010
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+
+  <!--second half-->
+
+  {
+    "id": 104,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+          "Tell me more! How would you go about that? What's the first thing you will do to achieve your quitting goal?"
+        ]
+      }
+    ],
+    "intents": [],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [],
+        "text":[
+            "Great to see that you are getting the plan in shape! It would be helpful to have some ideas in place for managing cravings that may come up during the quitting process. "
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [],
+        "trigger": [
+          "state",
+          105
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+  {
+    "id": 105,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+          "Have you thought about what you can do to manage cravings during your quit attempt? Are there any strategies that have worked well for you in the past, or new strategies that you would like to try?"
+        ]
+      }
+    ],
+    "intents": [
+      [
+        "dont_know",
+        "params.new.strategies"
+      ]
+    ],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            true,
+            "=="
+          ]
+        ],
+        "text": [
+          "I do know a few strategies that help with cravings and withdrawal symtops,"
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            false,
+            "=="
+          ]
+        ],
+        "text": [
+          "Nice brainstorming! That indeed can be a helpful strategy for managing difficult times."
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            null,
+            "=="
+          ]
+        ],
+        "text": [
+          "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            true,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          106
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            false,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          zzz
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            null,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          105
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+  {
+    "id": 106,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+          "if you'd like to know?"
+        ]
+      }
+    ],
+    "intents": [],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [],
+        "text":[""]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [],
+        "trigger": [
+          "state",
+          107
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+  {
+    "id": 107,
+    "conditions": [],
+    "questions": [],
+    "intents": [],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [],
+        "text": [
+          
+          "1. Nicotine replacement therapy: For example patches, gum, or inhalers. They can help reduce the intensity of cravings and withdrawal symptoms.",
+          "2. Mindfulness and relaxation: Techniques like deep breathing or meditation reduce stress and anxiety, which can be triggers for smoking."
+          "3. Staying busy: Try distractions like exercise or other activities you like can help reduce the urge to smoke.",
+          "4. Avoiding triggers: Try to identify situations that tend to trigger your smoking, and avoid them as much as possible during the quitting process.",
+          "These are just a few ideas, but what's important is to find what suits you the best."
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [],
+        "trigger": [
+          "state",
+          108
+        ]
+      }
+    ],
+    "type": "monologue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+  {
+    "id": 108,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+          "Does any of these look useful to you? [user picks from the list]"
+        ]
+      }
+    ],
+    "intents": [],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [],
+        "text":[""]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [],
+        "trigger": [
+          "state",
+          zzz
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+
+
+  {
+    "id": 110,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+          "How would you go about that? What's the first thing you will do to achieve your quitting goal?"
+        ]
+      }
+    ],
+    "intents": [],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [],
+        "text":[""]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [],
+        "trigger": [
+          "state",
+          111
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+  {
+    "id": 111,
+    "conditions": [],
+    "questions": [],
+    "intents": [],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [],
+        "text": [
+          
+         "Great to see that you are getting the plan in shape!",
+         "It would be helpful to have some ideas in place for managing cravings that may come up during the quitting process."
+          ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [],
+        "trigger": [
+          "state",
+          112
+        ]
+      }
+    ],
+    "type": "monologue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },
+
+
+  <?? silebilirsin
+  {
+    "id": 112,
+    "conditions": [],
+    "questions": [
+      {
+        "conditions": [],
+        "text": [
+        "Have you thought about what you can do to manage cravings during your quit attempt? Are there any strategies that have worked well for you in the past, or new strategies that you would like to try?"  
+        ]
+      }
+    ],
+    "intents": [
+      [
+        "dont_know",
+        "params.new.strategies"
+      ]
+    ],
+    "entities": [],
+    "responses": [
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            true,
+            "=="
+          ]
+        ],
+        "text": [
+          "I do know a few strategies that help with cravings and withdrawal symtops,"
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            false,
+            "=="
+          ]
+        ],
+        "text": [
+          "Nice brainstorming! That indeed can be a helpful strategy for managing difficult times."
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            null,
+            "=="
+          ]
+        ],
+        "text": [
+          "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            true,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          106
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            false,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          zzz
+        ]
+      },
+      {
+        "conditions": [
+          [
+            "params.new.strategies",
+            null,
+            "=="
+          ]
+        ],
+        "trigger": [
+          "state",
+          105
+        ]
+      }
+    ],
+    "type": "dialogue",
+    "multipleChoice": [],
+    "generators": [],
+    "actions": []
+  },

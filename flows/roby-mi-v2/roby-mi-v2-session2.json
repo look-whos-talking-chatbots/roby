@@ -1,0 +1,2250 @@
+{
+  "version": "v2",
+  "name": "roby-s2",
+  "description": "Roby: Dialogue flow of Session-2",
+  "slot_fillers": {
+    "static_slots": {},
+    "retrieval_slots": {}
+  },
+  "dialogue_flows": [
+    {
+      "id": 2021,
+      "title": "Session 2 flows",
+      "description": "Welcome messages for session 2",
+      "conditions": [],
+      "states": [
+        {
+          "id": 9000,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Hi, {{name}}, nice to see you again! How are you?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [""]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                 9005
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9005,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Hey, in our last chat you decided to quit on {quit date}."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9010
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9010,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "It's been a week now, how is it going? Did you make a quit attempt on the date you chose?"
+              ]
+            }
+          ],
+          "intents": [
+            
+              [
+                "yes_no",
+                "params.qualtrics.confirm"
+              ]
+            
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.qualtrics.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Great that you did! No surprise :)"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.qualtrics.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "It's normal to have tough moments and feel unsure."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.qualtrics.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.qualtrics.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9020
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.qualtrics.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9060
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.qualtrics.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9010
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9060,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "When you signed up, you indicated that you did want to make a quit attempt in the next two weeks. Are you still up for quitting smoking?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.noattempt.intentto"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.noattempt.intentto",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Nice that you made the decision!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.noattempt.intentto",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Seems like you're not ready to quit smoking yet, and that's ok. Everyone has their own pace on the journey to quit. You can always start this conversation again if you ever give it a second thought! ",
+                "Since I was designed to help people who are making active quit attempts,"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.noattempt.intentto",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.noattempt.intentto",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9065
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.noattempt.intentto",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9070
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.noattempt.intentto",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9060
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9070,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Would you like to continue or withdraw from participating in this study? Please choose between A, B. \n A ) continue \n B ) withdraw \n"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "multipleChoice": [
+            "a,b",
+            "params.chat.continue"
+          ],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  "a",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Nice that you want to continue! "
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  "b",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Alright! It was nice chatting with you, {{name}}. If you ever need more information on quitting smoking, you can find it at: https://www.rokeninfo.nl/stoppen-met-roken"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "Sorry, I couldn't catch that. Try again, and make sure you use one of the four letters to indicate your answer!"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  "a",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9075
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  "b",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9070
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9075,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What would be your new quit date then? Please choose a date within the next week. Send the date in the format of dd-mm-yy."
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "date_check",
+              "params.check.date"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "In this session and the coming weekly sessions, we are going to discuss some obstacles you may encounter as you quit smoking and how to deal with them. Maybe that could be useful in a future quit attempt."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9080
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9075
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9065,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Could you then tell me why you did not quit as you wanted? What challenges did you encounter?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks for sharing! It is an important first step to notice what got in your way, and you just did great reflecting on that!",
+                "In this session and the coming weekly sessions, we are going to discuss some obstacles you may encounter as you quit smoking and how to deal with them. Maybe that could be useful in a future quit attempt. "
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9080
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9080,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Does that sound ok with you?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.ok.confirm"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.ok.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Ok! What I have in mind for today is withdrawal symptoms and how to cope with them. Depending on your smoking habit, you may encounter some uneasy experience because your body has been used to nicotine. However, the good news is that compared to other addictions these are relatively mild, and there are ways to deal with them. Knowing this may help you to make a quit attempt. "
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.ok.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.ok.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9125
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.ok.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9080
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9020,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "The next question is how things have been going, did you succeed in not smoking the whole week?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.attempt.success"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "It's great to hear that you made it through!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "It's great to hear that you made a quit attempt! Too bad you were not able to succeed this time. Do realize that many people succeed after multiple attempts (it's a bit like a driving exam :))."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9025
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9035
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9020
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9035,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "How do you feel about the quit attempt? Let's start with the positive - what's been good in the last week?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks. Quitting smoking is also a learning experience"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9040
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9040,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What did you learn from the slip? What could you have done differently in this situation?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks for thinking along! Reflecting on the past is an important step on the journey, and you just did great."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9040
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9045,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Maybe that could be useful in a new quit attempt. Does that sound ok with you?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.new.attempt"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                ""
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.new.attempt",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9100
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.new.attempt",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9105
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.new.attempt",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9045
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9025,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "How do you feel about it? Let's start with the positive - what's been good in the last week?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks for sharing! "
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9030
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9030,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Great that you succeeded these first days. Note that the first days are often the hardest, so you are in good shape! ",
+                "To end this brief check-in, it's good to re-activate the reasons why you wanted to quit in the first place.",
+                "In our last chat, you told me you would like to quit for your {reason to quit}"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9050
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9050,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What positive changes have you noticed in that?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks for sharing!"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9090
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9090,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "In this session and the coming weekly sessions, we are going to discuss some obstacles you may encounter as you quit smoking and how to deal with them."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9095
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9095,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Does it sound ok with you?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.ok.confirm"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                ""
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.ok.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9100
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.ok.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9105
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.ok.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9095
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9100,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Ok! What I have in mind for today is withdrawal symptoms and how to cope with them. As you quit smoking, you might encounter some uneasy experience because your body has been used to nicotine."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9110
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9105,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "That's alright. Since this is the first week on your journey away from cigarettes, I wonder..."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9110
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9110,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Have you noticed any physical or mood changes since quitting?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.any.change"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.any.change",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                ""
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.any.change",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Great, it looks like you haven't been experiencing the symptoms that sometimes happen to people when they quit. "
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.any.change",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.any.change",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9115
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.any.change",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9125
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.any.change",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9110
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9115,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Like what?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks for sharing, that must have been tough. Those symptoms are temporary and they are signs that your body is healing itself."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9120
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9120,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What did you do to cope with that? Or what do you think would help?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [""]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9135
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9125,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "People have different reaction to nicotine withdrawal, you may not experience anything, or the symptoms may come later."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9130
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9130,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Let's imagine that you are feeling restless and having trouble sleeping, what would help with that?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": []
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9135
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9135,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks for thinking along with me! One important way to cope with these symptoms is to recognize them and keep them in perspective"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9140
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9140,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Would you like to know more symptoms that people may experience?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.symptoms.experience"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.symptoms.experience",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Some common ones are:",
+                "- feeling irratated, gloomy, or grumpy;",
+                "- feeling restless;",
+                "- trouble with sleeping;",
+                "- more appetite"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.symptoms.experience",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's alright. If you ever experience any or would like to know more, you can always find more information on: https://www.rokeninfo.nl/stoppen-met-roken",
+                " I just want to say that these symptoms are temporary and usually go away in a few minutes, and they are positive signs that your body is healing"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.symptoms.experience",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.symptoms.experience",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9145
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.symptoms.experience",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9150
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.symptoms.experience",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9140
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9145,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Any of these looks familiar? I just want to say that these symptoms are temporary and usually go away in a few minutes, and they are positive signs that your body is healing. Does this make sense to you?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [""]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9155
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9150,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                " I just want to say that these symptoms are temporary and usually go away in a few minutes, and they are positive signs that your body is healing. Does this make sense to you?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": []
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9155
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9155,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Alright! What would you do to distract yourself from the short moments? For example, maybe literally run away from the situation for a while. You know best what works for you though. Any idea? "
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks for thinking along!"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9160
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9160,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "I also have a general technique that may be useful, if you'd like to know?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.general.technique"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.general.technique",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "It's called the 'Decision Delay Technique'. Try to put off the decision to smoke for 15 minutes, then the urges are usually gone. Try to imagine the symptoms as waves that comes up and go down."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.general.technique",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's alright! You know what works best for you to seek distraction."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.general.technique",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.general.technique",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9165
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.general.technique",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9170
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.general.technique",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9160
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9165,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "How does this sound to you?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [""]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                9170
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9170,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": []
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.attempt.success"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "If you would like to know more about withdrawal and have more tips, here's a useful website: https://www.ikstopnu.nl/bibliotheek/ ontwenningsverschijnselen/#zo-ga-je-om-met-ontwenningsverschijnselen",
+                "Alright! This is what I wanted to discuss with you today!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "I want to say, again, that I'm proud of you for making decision to quit and for making the progress so far!",
+                "We have discussed withdrawal symptoms that you're experiencing or may experience, and came up with coping strategies together.",
+                "I would like to ask you to pay attention to these feelings in the coming week. Also please practice what we discussed today."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "I want to say, again, that I'm proud of you for making decision to quit and for making the active quit attempt!",
+                "We have discussed withdrawal symptoms that you're experiencing or may experience, and came up with coping strategies together.",
+                "I would like to ask you to make a new quit attempt next week and pay attention to these feelings, and practice what we discussed today."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "We have discussed withdrawal symptoms that you may experience, and came up with coping strategies together.",
+                "You decided on a new quit date on {quit date_2}. I would like to ask you to pay attention to these feelings in the coming week. Also please practice what we discussed today."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9175
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9175
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9175
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9175,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Would you like to give it a try?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.try.confirm"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "yes",
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Great! I hope that our conversation has been helpful, and I wish you the best for your quitting journey!",
+                " You can also find useful information about quitting at https://www.rokeninfo.nl/stoppen-met-roken",
+                "See you at our next weekly session! "
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "yes",
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's alright if you're not ready, everyone has their own tempo on the quitting journey.",
+                " You can also find useful information about quitting at https://www.rokeninfo.nl/stoppen-met-roken",
+                "See you at our next weekly session! "
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "no",
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Great!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "no",
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Seems like you're not ready to quit smoking yet, and that's ok. Everyone has their own pace on the journey to quit. If you ever give this a second thought, my door is always open!",
+                "Since I was designed to help people who are making active quit attempts,"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  null,
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Great! I hope that our conversation has been helpful, and I wish you the best for your quitting journey!",
+                "You can also find useful information about quitting at https://www.rokeninfo.nl/stoppen-met-roken",
+                "See you at our next weekly session!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  null,
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's alright if you're not ready, everyone has their own tempo on the quitting journey.",
+                "You can also find useful information about quitting at https://www.rokeninfo.nl/stoppen-met-roken",
+                "See you at our next weekly session!"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "no",
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9180
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  "no",
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9185
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.attempt.success",
+                  null,
+                  "=="
+                ],
+                [
+                  "params.try.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9175
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9185,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "would you like to continue or withdraw from participating in this study? Please choose between A, B. \n A ) continue \n B ) withdraw \n"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "multipleChoice": [
+            "a,b",
+            "params.chat.continue"
+          ],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  "a",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Nice that you want to continue! "
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  "b",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Alright! It was nice chatting with you, {{name}}. If you ever need more information on quitting smoking, you can find it at: https://www.rokeninfo.nl/stoppen-met-roken"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "Sorry, I couldn't catch that. Try again, and make sure you use one of the four letters to indicate your answer!"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  "a",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9190
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  "b",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.chat.continue",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9185
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9190,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What would be your new quit date then? Choose a date within the next weeks. Please answer in the format of dd-mm-yy."
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "date_check",
+              "params.check.date"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": []
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9195
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9190
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9180,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What would be your new quit date in the next week? Please answer in the format of dd-mm-yy."
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "date_check",
+              "params.check.date"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": []
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9195
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.check.date",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                9180
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 9195,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Great! I hope that our conversation has been helpful, and I wish you the best for your quitting journey!",
+                "You can also find useful information about quitting at https://www.rokeninfo.nl/stoppen-met-roken",
+                "See you at our next weekly session! "
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state"
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Terminated!!"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state"
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        }
+      ]
+    }
+  ]
+}
