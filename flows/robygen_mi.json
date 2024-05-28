@@ -1,7 +1,8 @@
 {
   "version": "v1.1",
-  "name": "robygen-mi",
+  "name": "robygen",
   "description": "Generative Roby: the smoking cessation bot, motivational interviewing variant",
+  "language": "en",
   "slot_fillers": {
     "static_slots": {
       "params.norm.actual-comment": [
@@ -4134,7 +4135,7 @@
                 ]
               ],
               "text": [
-                "{{ params.stoppedBefore.stopDuration.number }} {{ params.stoppedBefore.stopDuration.frequency }}! That's not a small thing!"
+                "{{ params.stoppedBefore.stopDuration.frequency }}! That's not a small thing!"
               ]
             },
             {
@@ -4333,7 +4334,7 @@
             {
               "conditions": [],
               "text": [
-                "{{ params.stoppedBefore.stopDuration.number }} {{ params.stoppedBefore.stopDuration.frequency }} was probably not easy, so I wonder, how did you do that? What methods did you use?"
+                "{{ params.stoppedBefore.stopDuration.frequency }} was probably not easy, so I wonder, how did you do that? What methods did you use?"
               ]
             }
           ],
@@ -4724,7 +4725,7 @@
             {
               "conditions": [],
               "text": [
-                "You had hard times, I can imagine. But you made it to {{ params.stoppedBefore.stopDuration.number }} {{ params.stoppedBefore.stopDuration.frequency }}! I wonder, are there things you can think of that remediated these feelings?"
+                "You had hard times, I can imagine. But you made it to {{ params.stoppedBefore.stopDuration.frequency }}! I wonder, are there things you can think of that remediated these feelings?"
               ]
             }
           ],
@@ -5088,7 +5089,7 @@
             {
               "conditions": [],
               "text": [
-                "Nice critical thinking! You're smart, critical, and you know your strength that could help you handle chanllenges."
+                "Nice critical thinking! You're smart, critical, and you know your strength that could help you handle challenges."
               ]
             }
           ],

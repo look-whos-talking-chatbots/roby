@@ -1,7 +1,7 @@
 {
-  "version": "v1.0",
-  "name": "roby-cc",
-  "description": "Roby: the smoking cessation bot, confrontational variant",
+  "version": "v1.1",
+  "name": "roby-mi",
+  "description": "Roby: the smoking cessation bot, motivational interviewing variant",
   "language": "en",
   "slot_fillers": {
     "static_slots": {
@@ -261,6 +261,130 @@
           ]
         }
       ],
+      "params.quitting.consequence-comment": [
+        {
+          "conditions": [
+            [
+              "params.quitting.consequence",
+              "health",
+              "=="
+            ]
+          ],
+          "text": [
+            "Sounds like you would like to be healthier overall, and stopping smoking might be a big step towards that."
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.consequence",
+              "appearance",
+              "=="
+            ]
+          ],
+          "text": [
+            "You want to look and smell good, and you're seeing that smoking might impact you on that."
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.consequence",
+              "cost",
+              "=="
+            ]
+          ],
+          "text": [
+            "So you want to take care of your finance, and stopping smoking might be an important step you can take."
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.consequence",
+              "social",
+              "=="
+            ]
+          ],
+          "text": [
+            "You care about people close to you and you don't want smoking to influence your relationships with them."
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.consequence",
+              "other",
+              "=="
+            ]
+          ],
+          "text": [
+            "OK, I'll remember that. Thanks for helping me learn!"
+          ]
+        }
+      ],
+      "params.quitting.reasons.summary-comment": [
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.list",
+              "health",
+              "in"
+            ]
+          ],
+          "text": [
+            "your health is"
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.list",
+              "appearance",
+              "in"
+            ]
+          ],
+          "text": [
+            "your appearance is"
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.list",
+              "cost",
+              "in"
+            ]
+          ],
+          "text": [
+            "financial responsibility is"
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.list",
+              "social",
+              "in"
+            ]
+          ],
+          "text": [
+            "you have people who are"
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.list",
+              "other",
+              "in"
+            ]
+          ],
+          "text": [
+            "you have your personal reasons which are"
+          ]
+        }
+      ],
       "params.smoking.quit.summary-comment": [
         {
           "conditions": [
@@ -373,120 +497,83 @@
             "own reasons"
           ]
         }
-      ],
-      "params.bestWay.choice-comment": [
-        {
-          "conditions": [
-            [
-              "params.bestWay.choice",
-              "a",
-              "=="
-            ]
-          ],
-          "text": [
-            "going cold turkey"
-          ]
-        },
-        {
-          "conditions": [
-            [
-              "params.bestWay.choice",
-              "b",
-              "=="
-            ]
-          ],
-          "text": [
-            "using nicotine patches or gums"
-          ]
-        },
-        {
-          "conditions": [
-            [
-              "params.bestWay.choice",
-              "c",
-              "=="
-            ]
-          ],
-          "text": [
-            "taking counselling"
-          ]
-        },
-        {
-          "conditions": [
-            [
-              "params.bestWay.choice",
-              "d",
-              "=="
-            ]
-          ],
-          "text": [
-            "taking medication from doctors"
-          ]
-        },
-        {
-          "conditions": [
-            [
-              "params.bestWay.choice",
-              null,
-              "=="
-            ]
-          ],
-          "text": [
-            ""
-          ]
-        }
-      ],
-      "params.nicotineDependency-comment": [
-        {
-          "conditions": [
-            [
-              "params.nicotineDependency",
-              "low-dependence",
-              "=="
-            ]
-          ],
-          "text": [
-            "moderate"
-          ]
-        },
-        {
-          "conditions": [
-            [
-              "params.nicotineDependency",
-              "moderate",
-              "=="
-            ]
-          ],
-          "text": [
-            "moderate to high"
-          ]
-        },
-        {
-          "conditions": [
-            [
-              "params.nicotineDependency",
-              "high",
-              "=="
-            ]
-          ],
-          "text": [
-            "high"
-          ]
-        }
       ]
     },
     "retrieval_slots": {
-      "params.stopNext.bestWay-comment": [
+      "params.quitting.reasons.last-comment": [
         {
-          "conditions": [],
+          "conditions": [
+            [
+              "params.quitting.reasons.last",
+              "health",
+              "=="
+            ]
+          ],
           "text": [
-            "Just going cold turkey might work.",
-            "Cutting down little by little might work.",
-            "Removing all smoking - related things might work.",
-            "Trying out nicotine gum might work.",
-            "Nicotine patches might work.",
-            "Doing more work out might work.",
-            "Setting a budget on cigarettes might work."
+            "I see that health is important to you and it is a concern to you that smoking may impact your health and well-being in the long term.",
+            "Yes, smoking is bad for health in every way, and you are concerned about it.",
+            "So you're concerned that smoking might give you damaged lungs.",
+            "You want to be healthier in general, and smoking might hold you back from that.",
+            "Smoking gives you sensitive teeth, and you are probably not happy with that."
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.last",
+              "appearance",
+              "=="
+            ]
+          ],
+          "text": [
+            "It concerns you that smoking may impact your appearance in some ways.",
+            "You don't like yellow teeth and smoking is not helping with that.",
+            "Yellow fingers from smoking can be annoying to you.",
+            "So I understand that you'd like to smell and look fresh, and smoking might get in your way.",
+            "It concerns you that smoking may give you unpleasant smell",
+            "You are not happy with the yellow teeth that smoking brings to you"
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.last",
+              "cost",
+              "=="
+            ]
+          ],
+          "text": [
+            "So I understand that being financially responsible is important to you, and you don't want smoking to influence you on that.",
+            "Smoking indeed costs a lot of money, perhaps more than what you'd expect",
+            "Smoking is quite expensive, and you'd like to take better care of your finance",
+            "Cigarettes are indeed expensive, and it seems like you started to be aware of how much they are costing you"
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.last",
+              "social",
+              "=="
+            ]
+          ],
+          "text": [
+            "There are some people that are important to you, and it concerns you that smoking might affect your relationship with them in some ways.",
+            "So your parents are not happy with you smoking, and you care about their feelings too",
+            "Your relationship with your parents is important to you, and you don't want smoking to influence that in some ways",
+            "You care about your partner, and you're seeing that quitting might improve your relationship"
+          ]
+        },
+        {
+          "conditions": [
+            [
+              "params.quitting.reasons.last",
+              "other",
+              "=="
+            ]
+          ],
+          "text": [
+            "OK, I'll remember that. Thanks for helping me learn!"
           ]
         }
       ],
@@ -502,6 +589,19 @@
           ]
         }
       ],
+      "params.stoppedBefore.feelings.posOne-comment": [
+        {
+          "conditions": [],
+          "text": [
+            "That must feel quite rewarding!",
+            "That must feel like great achievement!",
+            "It feels quite light and independent!",
+            "It does bring you some sense of achievement and satisfaction.",
+            "It feels good to overcome challenges.",
+            "It feels good to make it through hard times."
+          ]
+        }
+      ],
       "params.stoppedBefore.strength-comment": [
         {
           "conditions": [],
@@ -514,16 +614,17 @@
           ]
         }
       ],
-      "params.stoppedBefore.feelings.posOne-comment": [
+      "params.stopNext.bestWay-comment": [
         {
           "conditions": [],
           "text": [
-            "That must feel quite rewarding!",
-            "That must feel like great achievement!",
-            "It feels quite light and independent!",
-            "It does bring you some sense of achievement and satisfaction.",
-            "It feels good to overcome challenges.",
-            "It feels good to make it through hard times."
+            "Just going cold turkey might work.",
+            "Cutting down little by little might work.",
+            "Removing all smoking - related things might work.",
+            "Trying out nicotine gum might work.",
+            "Nicotine patches might work.",
+            "Doing more work out might work.",
+            "Setting a budget on cigarettes might work."
           ]
         }
       ]
@@ -566,13 +667,7 @@
         },
         {
           "id": 4502,
-          "conditions": [
-            [
-              "name",
-              null,
-              "=="
-            ]
-          ],
+          "conditions": [],
           "questions": [
             {
               "conditions": [],
@@ -771,13 +866,7 @@
         },
         {
           "id": 4504,
-          "conditions": [
-            [
-              "params.qualtrics.idStr",
-              null,
-              "!="
-            ]
-          ],
+          "conditions": [],
           "questions": [
             {
               "conditions": [],
@@ -1355,7 +1444,7 @@
                 ]
               ],
               "text": [
-                "That's pretty soon. You really have to smoke soon after you wake up."
+                "You feel that cigarettes help you to start the day."
               ]
             },
             {
@@ -1367,7 +1456,7 @@
                 ]
               ],
               "text": [
-                "That's pretty soon. You really have to smoke soon after you wake up."
+                "You feel that cigarettes help you to start the day."
               ]
             },
             {
@@ -1379,7 +1468,7 @@
                 ]
               ],
               "text": [
-                "Ok, not too bad. You don't need a cigarette first thing in the morning."
+                "It's good that you may not feel the need to smoke until later in the day."
               ]
             },
             {
@@ -1391,7 +1480,7 @@
                 ]
               ],
               "text": [
-                "Ok, not too bad. You don't need a cigarette first thing in the morning."
+                "It's good that you may not feel the need to smoke until later in the day."
               ]
             },
             {
@@ -1506,7 +1595,7 @@
                 ]
               ],
               "text": [
-                "Seems like you're quite dependent on it, which is not a good sign."
+                "It would be a hard time for you without it. I can imagine."
               ]
             },
             {
@@ -1518,7 +1607,7 @@
                 ]
               ],
               "text": [
-                "Ok, then maybe you could give up at least this one if not the others."
+                "The first morning smoke is not particularly important to you."
               ]
             },
             {
@@ -1622,7 +1711,7 @@
             {
               "conditions": [],
               "text": [
-                "Thanks. Next, on a typical day of yours - do you smoke more in the morning?"
+                "Thanks, on a typical day of yours - do you smoke more in the morning?"
               ]
             }
           ],
@@ -1643,7 +1732,7 @@
                 ]
               ],
               "text": [
-                "Got it. It means you have some dependency on it, that could be concerning."
+                "Okay, I see maybe you feel that cigarettes are more important to you in the morning."
               ]
             },
             {
@@ -1655,7 +1744,7 @@
                 ]
               ],
               "text": [
-                "Alright. You can control yourself, at least for a while in the morning."
+                "Okay, so you don't necessarily have special cravings in the morning, or even if you do, you find ways to control them."
               ]
             },
             {
@@ -1724,7 +1813,7 @@
             {
               "conditions": [],
               "text": [
-                "Which time during the day do you smoke the most, then?"
+                "That's  great. Which time during the day do you smoke the most, then?"
               ]
             }
           ],
@@ -1759,7 +1848,7 @@
             {
               "conditions": [],
               "text": [
-                "And do you find it difficult to not smoke in places where you're not allowed to? For example, in the cinema or library?"
+                "Thanks. And do you find it difficult to not smoke in places where you're not allowed to? For example, in the cinema or library?"
               ]
             }
           ],
@@ -1780,7 +1869,7 @@
                 ]
               ],
               "text": [
-                "You really need a cigarette when the craving comes to you."
+                "I can understand, you might find it hard to control the craving when it comes to you"
               ]
             },
             {
@@ -1792,7 +1881,7 @@
                 ]
               ],
               "text": [
-                "Good. Maybe you could try to have more self control like in this situation."
+                "That's great. You don't have problem refraining from smoking in places where it is not allowed."
               ]
             },
             {
@@ -1871,7 +1960,7 @@
             {
               "conditions": [],
               "text": [
-                "Ok."
+                "Thanks! "
               ]
             }
           ],
@@ -1917,7 +2006,7 @@
                 ]
               ],
               "text": [
-                "Ok. Just thought I'd let you know that smoking when ill usually makes your condition worse."
+                "You feel the need a lot, no matter what the cost."
               ]
             },
             {
@@ -1929,7 +2018,7 @@
                 ]
               ],
               "text": [
-                "Ok. Seems like you know smoking can make things worse, especially when you're sick."
+                "Sounds like you have concerns about the consequences of smoking in that situation. That's great."
               ]
             },
             {
@@ -2033,7 +2122,7 @@
             {
               "conditions": [],
               "text": [
-                "I have one last question. Do you intend to stop smoking in the next 6 months?"
+                "Thanks for your sharing so far, {{ name }}, it's really helping me to get to know your behavior. I have one last question. Do you intend to stop smoking in the next 6 months?"
               ]
             }
           ],
@@ -2054,7 +2143,7 @@
                 ]
               ],
               "text": [
-                "You're thinking about stopping smoking in the next 6 months."
+                "It's great that you've made up your mind to do so!"
               ]
             },
             {
@@ -2066,7 +2155,7 @@
                 ]
               ],
               "text": [
-                "So you're not thinking about stopping smoking anytime soon."
+                "That's okay if you are not ready. It's totally up to you."
               ]
             },
             {
@@ -2156,7 +2245,7 @@
                 ]
               ],
               "text": [
-                "Yes, that's the right decision you should make."
+                "Great! You are really ready to quit!"
               ]
             },
             {
@@ -2168,7 +2257,7 @@
                 ]
               ],
               "text": [
-                "Ok, so you're just thinking about quitting but not planning to take actions soon. I think you should start doing something though, a step forward is for your own good."
+                "And that's certainly okay! You're thinking about it, that's already a first step!"
               ]
             },
             {
@@ -2189,26 +2278,13 @@
               "conditions": [
                 [
                   "params.smoking.quit.nextMonth",
-                  "yes",
-                  "=="
+                  null,
+                  "!="
                 ]
               ],
               "trigger": [
                 "state",
-                5612
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.smoking.quit.nextMonth",
-                  "no",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                5612
+                5613
               ]
             },
             {
@@ -2258,7 +2334,7 @@
                 ]
               ],
               "text": [
-                "So you'd consider stopping smoking only if it was easy."
+                "That's cool, you're willing to give it a shot if it didn't cost too much effort or end up giving you a hard time."
               ]
             },
             {
@@ -2270,7 +2346,7 @@
                 ]
               ],
               "text": [
-                "Seems like you're not interested in quitting at all. I hope our conversation today can help you realize that you really need to quit."
+                "And that's certainly your choice, of course."
               ]
             },
             {
@@ -2291,26 +2367,13 @@
               "conditions": [
                 [
                   "params.smoking.quit.ifEasy",
-                  "yes",
-                  "=="
+                  null,
+                  "!="
                 ]
               ],
               "trigger": [
                 "state",
-                5612
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.smoking.quit.ifEasy",
-                  "no",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                5612
+                5613
               ]
             },
             {
@@ -2333,12 +2396,36 @@
           "actions": []
         },
         {
-          "id": 5612,
+          "id": 5613,
           "conditions": [],
           "questions": [],
           "intents": [],
           "entities": [],
           "responses": [
+            {
+              "conditions": [
+                [
+                  "params.smoking.quit.nextMonth",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "If you ever find yourself thinking more about this decision in the future, my \"door\" is always open! :)"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.smoking.quit.ifEasy",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "If you ever find yourself thinking more about this decision in the future, my \"door\" is always open! :)"
+              ]
+            },
             {
               "conditions": [],
               "text": [
@@ -2355,7 +2442,7 @@
               ]
             }
           ],
-          "type": "dialogue",
+          "type": "monologue",
           "multipleChoice": [],
           "generators": [],
           "actions": []
@@ -2408,7 +2495,7 @@
                 ]
               ],
               "text": [
-                "Ok. But I was wondering if you think along with me..."
+                "No problem. But I was wondering if you think along with me..."
               ]
             },
             {
@@ -2606,23 +2693,97 @@
         {
           "id": 7503,
           "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
+          "questions": [
             {
               "conditions": [],
               "text": [
-                "In 2020, {{ params.norm.actual-comment }} of people of your age in the Netherlands reported that they smoke."
+                "Maybe you would like to know the actual number?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.norm.learn"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.norm.learn",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Happy to share! In 2020, {{ params.norm.actual-comment }} of people of your age in the Netherlands reported that they smoke."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.learn",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "No problem. But I was wondering if you think along with me..."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.learn",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
               ]
             }
           ],
           "triggers": [
             {
-              "conditions": [],
+              "conditions": [
+                [
+                  "params.norm.learn",
+                  "yes",
+                  "=="
+                ]
+              ],
               "trigger": [
                 "state",
                 7504
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.learn",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "flow",
+                2424
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.learn",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                7503
               ]
             }
           ],
@@ -2761,7 +2922,7 @@
               ]
             }
           ],
-          "type": "dialogue",
+          "type": "monologue",
           "multipleChoice": [],
           "generators": [],
           "actions": []
@@ -2769,23 +2930,199 @@
         {
           "id": 7505,
           "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
+          "questions": [
             {
               "conditions": [],
               "text": [
-                "In psychology, there is the idea that we sometimes think other people are doing the same things as us when most of the time, they're actually not!"
+                "Did you know that we sometimes have wrong ideas about other people's behaviors?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.norm.others.confirm"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.norm.others.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Hey that's impressive! So maybe you know that we sometimes think other people are doing the same things as we do when most of the time, they're actually not!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.others.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                ""
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.others.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
               ]
             }
           ],
           "triggers": [
             {
-              "conditions": [],
+              "conditions": [
+                [
+                  "params.norm.others.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
               "trigger": [
                 "state",
                 7507
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.others.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                7506
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.others.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                7505
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 7506,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Can I tell you something about this?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.norm.others.consent"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.norm.others.consent",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Cool! In psychology, there is the idea that we sometimes think other people are doing the same things as us when most of the time, they're actually not!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.others.consent",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Alright, no problem. Let's move on."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.others.consent",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.norm.others.consent",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                7507
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.others.consent",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                7507
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.norm.others.consent",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                7506
               ]
             }
           ],
@@ -2811,35 +3148,7 @@
             {
               "conditions": [],
               "text": [
-                ""
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [],
-              "trigger": [
-                "state",
-                7508
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 7508,
-          "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [],
-              "text": [
-                "Here are some popular reasons why people might decide not to smoke."
+                "I wonder why that is. "
               ]
             }
           ],
@@ -2868,20 +3177,231 @@
         {
           "id": 2401,
           "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
+          "questions": [
             {
               "conditions": [],
               "text": [
-                "Health is the biggest concern to most people. For example, many people are bothered by shortness of breath and are concerned about increased risk for fatal illness in the long term."
+                "What, according to you, would be good about not smoking?"
               ]
             }
           ],
+          "intents": [
+            [
+              "quitting_reason",
+              "params.quitting.reasons.last"
+            ],
+            [
+              "dont_know",
+              "params.quitting.reasons.dontKnow"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  2,
+                  "=="
+                ]
+              ],
+              "text": [
+                "{{ params.quitting.reasons.last-comment }}"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  0,
+                  ">"
+                ],
+                [
+                  "params.quitting.reasons.count",
+                  2,
+                  "<"
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  true,
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's alright."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  0,
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  true,
+                  "=="
+                ]
+              ],
+              "text": [
+                "Just to help us brainstorm a bit, do any of the following things apply you?"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  0,
+                  ">"
+                ],
+                [
+                  "params.quitting.reasons.count",
+                  2,
+                  "<"
+                ],
+                [
+                  "params.quitting.reasons.last",
+                  null,
+                  "!="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
+                  "=="
+                ]
+              ],
+              "text": [
+                "{{ params.quitting.reasons.last-comment }} Let's do another one! What else?",
+                "{{ params.quitting.reasons.last-comment }} One more! What else?"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.last",
+                  null,
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I don't quite get that. Was it about... :point_down: ?"
+              ]
+            }
+          ],
+          "actions": [
+            [
+              "append_quitting_reason",
+              "params.quitting.reasons.list",
+              "repeat"
+            ],
+            [
+              "count_quitting_reason",
+              "params.quitting.reasons.count",
+              "repeat"
+            ]
+          ],
           "triggers": [
             {
-              "conditions": [],
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  2,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                2403
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  0,
+                  ">"
+                ],
+                [
+                  "params.quitting.reasons.count",
+                  2,
+                  "<"
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  true,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                2403
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  0,
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  true,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                2402
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  0,
+                  ">"
+                ],
+                [
+                  "params.quitting.reasons.count",
+                  2,
+                  "<"
+                ],
+                [
+                  "params.quitting.reasons.last",
+                  null,
+                  "!="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                2401
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.last",
+                  null,
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
+                  "=="
+                ]
+              ],
               "trigger": [
                 "state",
                 2402
@@ -2890,8 +3410,7 @@
           ],
           "type": "dialogue",
           "multipleChoice": [],
-          "generators": [],
-          "actions": []
+          "generators": []
         },
         {
           "id": 2402,
@@ -2900,60 +3419,133 @@
             {
               "conditions": [],
               "text": [
-                "Please select one of the options below by typing the letter of your selection: \n A ) I learned something! \n B ) I already knew that."
+                "A ) Health concerns (shortness of breath, lung problems, increased risk of illness...) \n B ) Appearance concerns (yellow fingers and  teeth, bad breath, aged skin...) \n  C ) Personal relationship concerns (not wanting to upset family, friends, romantic partners or pressure from them) \n D ) Financial concerns (e.g., not wanting to spend too much money on cigarettes) \n E ) None of the above"
               ]
             }
           ],
           "intents": [],
           "entities": [],
           "multipleChoice": [
-            "a,b",
-            "params.knowledge.first"
+            "a,b,c,d,e",
+            "health,appearance,social,cost,other",
+            "params.quitting.reasons.last"
           ],
           "responses": [
             {
               "conditions": [
                 [
-                  "params.knowledge.first",
-                  "a",
+                  "params.quitting.reasons.count",
+                  2,
+                  "<"
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
                   "=="
+                ],
+                [
+                  "params.quitting.reasons.last",
+                  "other",
+                  "!="
                 ]
               ],
               "text": [
-                ""
+                "{{ params.quitting.reasons.last-comment }} What else?"
               ]
             },
             {
               "conditions": [
                 [
-                  "params.knowledge.first",
-                  "b",
+                  "params.quitting.reasons.count",
+                  2,
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
                   "=="
                 ]
               ],
               "text": [
-                ""
+                "{{ params.quitting.reasons.last-comment }}"
               ]
             },
             {
               "conditions": [
                 [
-                  "params.knowledge.first",
-                  null,
+                  "params.quitting.reasons.last",
+                  "other",
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
                   "=="
                 ]
               ],
               "text": [
-                "I couldn't catch that. Try again, and make sure you use one of the two letters to indicate your answer!"
+                "{{ params.quitting.reasons.last-comment }}"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.dontKnow",
+                  true,
+                  "=="
+                ]
+              ],
+              "text": [
+                "OK, I'll remember that. Thanks for helping me learn!"
               ]
             }
+          ],
+          "actions": [
+            [
+              "append_quitting_reason",
+              "params.quitting.reasons.list",
+              "repeat"
+            ],
+            [
+              "count_quitting_reason",
+              "params.quitting.reasons.count",
+              "repeat"
+            ]
           ],
           "triggers": [
             {
               "conditions": [
                 [
-                  "params.knowledge.first",
-                  "a",
+                  "params.quitting.reasons.count",
+                  2,
+                  "<"
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.last",
+                  "other",
+                  "!="
+                ]
+              ],
+              "trigger": [
+                "state",
+                2401
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.reasons.count",
+                  2,
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
                   "=="
                 ]
               ],
@@ -2965,8 +3557,13 @@
             {
               "conditions": [
                 [
-                  "params.knowledge.first",
-                  "b",
+                  "params.quitting.reasons.last",
+                  "other",
+                  "=="
+                ],
+                [
+                  "params.quitting.reasons.dontKnow",
+                  false,
                   "=="
                 ]
               ],
@@ -2978,38 +3575,86 @@
             {
               "conditions": [
                 [
-                  "params.knowledge.first",
-                  null,
+                  "params.quitting.reasons.dontKnow",
+                  true,
                   "=="
                 ]
               ],
               "trigger": [
-                "state",
-                2402
+                "flow",
+                3737
               ]
             }
           ],
           "type": "dialogue",
-          "generators": [],
-          "actions": []
+          "generators": []
         },
         {
           "id": 2403,
           "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
+          "questions": [
             {
               "conditions": [],
               "text": [
-                "Appearance is another popular reason. Yellow teeth and fingers, bad breath, wrinkles caused by smoking are huge disincentives for many people."
+                "How about we try something a little different? What do you see as a not-so-good thing if you continue smoking as you are?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "quitting_reason",
+              "params.quitting.consequence"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.quitting.consequence",
+                  null,
+                  "!="
+                ]
+              ],
+              "text": [
+                "{{ params.quitting.consequence-comment }}"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.consequence",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I don't quite get that. Was it about... :point_down: ?"
               ]
             }
           ],
           "triggers": [
             {
-              "conditions": [],
+              "conditions": [
+                [
+                  "params.quitting.consequence",
+                  null,
+                  "!="
+                ]
+              ],
+              "trigger": [
+                "state",
+                2405
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.quitting.consequence",
+                  null,
+                  "=="
+                ]
+              ],
               "trigger": [
                 "state",
                 2404
@@ -3028,51 +3673,40 @@
             {
               "conditions": [],
               "text": [
-                "Please select one of the options below by typing the letter of your selection: \n A ) That's something new to me \n B ) I know this one."
+                "A ) Health concerns (shortness of breath, lung problems, increased risk of illness...) \n B ) Appearance concerns (yellow fingers and  teeth, bad breath, aged skin...) \n  C ) Personal relationship concerns (not wanting to upset family, friends, romantic partners or pressure from them) \n D ) Financial concerns (e.g., not wanting to spend too much money on cigarettes) \n E ) None of the above"
               ]
             }
           ],
           "intents": [],
           "entities": [],
           "multipleChoice": [
-            "a,b",
-            "params.knowledge.second"
+            "a,b,c,d,e",
+            "health,appearance,social,cost,other",
+            "params.quitting.consequence"
           ],
           "responses": [
             {
               "conditions": [
                 [
-                  "params.knowledge.second",
-                  "a",
-                  "=="
+                  "params.quitting.consequence",
+                  null,
+                  "!="
                 ]
               ],
               "text": [
-                ""
+                "{{ params.quitting.consequence-comment }}"
               ]
             },
             {
               "conditions": [
                 [
-                  "params.knowledge.second",
-                  "b",
-                  "=="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.second",
+                  "params.quitting.consequence",
                   null,
                   "=="
                 ]
               ],
               "text": [
-                "I couldn't catch that. Try again, and make sure you use one of the two letters to indicate your answer!"
+                "Sorry I did not get that. Could you tell me again?"
               ]
             }
           ],
@@ -3080,9 +3714,9 @@
             {
               "conditions": [
                 [
-                  "params.knowledge.second",
-                  "a",
-                  "=="
+                  "params.quitting.consequence",
+                  null,
+                  "!="
                 ]
               ],
               "trigger": [
@@ -3093,20 +3727,7 @@
             {
               "conditions": [
                 [
-                  "params.knowledge.second",
-                  "b",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                2405
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.second",
+                  "params.quitting.consequence",
                   null,
                   "=="
                 ]
@@ -3131,249 +3752,21 @@
             {
               "conditions": [],
               "text": [
-                "Personal relationships is also an important factor for many people to stop smoking. Fear of disappointing family members, friends or romantic partners or receiving  pressure from them motivate a lot of smokers to quit."
+                "Those are some great points that you bring out, and I'm really glad you came up with them! :)"
               ]
             }
           ],
           "triggers": [
             {
               "conditions": [],
-              "trigger": [
-                "state",
-                2406
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 2406,
-          "conditions": [],
-          "questions": [
-            {
-              "conditions": [],
-              "text": [
-                "Please select one of the options below by typing the letter of your selection: \n A ) Good to know that \n B ) This has occured to me"
-              ]
-            }
-          ],
-          "intents": [],
-          "entities": [],
-          "multipleChoice": [
-            "a,b",
-            "params.knowledge.third"
-          ],
-          "responses": [
-            {
-              "conditions": [
-                [
-                  "params.knowledge.third",
-                  "a",
-                  "=="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.third",
-                  "b",
-                  "=="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.third",
-                  null,
-                  "=="
-                ]
-              ],
-              "text": [
-                "I couldn't catch that. Try again, and make sure you use one of the two letters to indicate your answer!"
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [
-                [
-                  "params.knowledge.third",
-                  "a",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                2407
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.third",
-                  "b",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                2407
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.third",
-                  null,
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                2406
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 2407,
-          "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [],
-              "text": [
-                "Cost is also a concern to many people. If you smoke one pack of cigarette every day, how much do you have to spend on that in a month? In a year? Well, you do the math."
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [],
-              "trigger": [
-                "state",
-                2408
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 2408,
-          "conditions": [],
-          "questions": [
-            {
-              "conditions": [],
-              "text": [
-                "Please select one of the options below by typing the letter of your selection: \n A ) I've thought about this \n B ) Learned something"
-              ]
-            }
-          ],
-          "intents": [],
-          "entities": [],
-          "multipleChoice": [
-            "a,b",
-            "params.knowledge.fourth"
-          ],
-          "responses": [
-            {
-              "conditions": [
-                [
-                  "params.knowledge.fourth",
-                  "a",
-                  "=="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.fourth",
-                  "b",
-                  "=="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.fourth",
-                  null,
-                  "=="
-                ]
-              ],
-              "text": [
-                "I couldn't catch that. Try again, and make sure you use one of the two letters to indicate your answer!"
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [
-                [
-                  "params.knowledge.fourth",
-                  "a",
-                  "=="
-                ]
-              ],
               "trigger": [
                 "flow",
                 3737
               ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.fourth",
-                  "b",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "flow",
-                3737
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.knowledge.fourth",
-                  null,
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                2408
-              ]
             }
           ],
-          "type": "dialogue",
+          "type": "monologue",
+          "multipleChoice": [],
           "generators": [],
           "actions": []
         }
@@ -3386,13 +3779,41 @@
       "conditions": [],
       "states": [
         {
+          "id": 3701,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "So, let me summarize what I understand so far. There are some important things in your life that you want to take care of, for example, {{ params.quitting.reasons.summary-comment }} important to you, and you're seeing how smoking might have an impact on that."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                3702
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
           "id": 3702,
           "conditions": [],
           "questions": [
             {
               "conditions": [],
               "text": [
-                "You told me earlier that {{ params.smoking.quit.summary-comment }}, what do you think now? Is it still the case?"
+                "You also told me earlier that {{ params.smoking.quit.summary-comment }}, what do you think now? Is it still the case?"
               ]
             }
           ],
@@ -3402,7 +3823,7 @@
             {
               "conditions": [],
               "text": [
-                "Alright, these are all my questions for this session. I hope our conversation has been useful to you and you will quit soon."
+                ""
               ]
             }
           ],
@@ -3430,62 +3851,9 @@
             {
               "conditions": [],
               "text": [
-                "Now you can take a break, and when you're ready for our next session, just type \"Hello\" and I'll be back!"
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [],
-              "trigger": [
-                "state",
-                3704
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 3704,
-          "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [],
-              "text": [
-                "Please now go back to the questionnaire page and answer a few questions for my creator."
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [],
-              "trigger": [
-                "state",
-                3705
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 3705,
-          "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [],
-              "text": [
+                "Alright, these are all my questions for this session. Thank you for sharing so much with me, {{ name }}, it's really helping me get to know your smoking behavior! I hope our conversation has been useful to you too.",
+                "Now you can take a break, and when you're ready for our next session, just type \"Hello\" and I'll be back!",
+                "Please now go back to the questionnaire page and answer a few questions for my creator.",
                 "PAY ATTENTION! It is very important for the researcher that you complete this questionnaire completely."
               ]
             }
@@ -3511,7 +3879,7 @@
               ]
             }
           ],
-          "type": "dialogue",
+          "type": "monologue",
           "multipleChoice": [],
           "generators": []
         }
@@ -3526,7 +3894,14 @@
         {
           "id": 1201,
           "conditions": [],
-          "questions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "It was nice talking to you! Thanks for helping me have a better idea about you and your smoking behavior. In this session now, we will discuss more and find the best way for us to move forward on your quitting process. Does that sound good to you?"
+              ]
+            }
+          ],
           "intents": [
             [
               "yes_no",
@@ -3536,18 +3911,80 @@
           "entities": [],
           "responses": [
             {
-              "conditions": [],
+              "conditions": [
+                [
+                  "params.secondSession.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
               "text": [
-                "It was nice talking to you! Thanks for helping me have a better idea about you and your smoking behavior. In this session now, I will help you find the best way for you to quit."
+                "First, I'm curious."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.secondSession.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "No problem, {{ name }}. :) Just so you know, you can always find me here whenever you want to revisit this."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.secondSession.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
               ]
             }
           ],
           "triggers": [
             {
-              "conditions": [],
+              "conditions": [
+                [
+                  "params.secondSession.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
               "trigger": [
                 "state",
                 1202
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.secondSession.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "flow",
+                10000
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.secondSession.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1201
               ]
             }
           ],
@@ -3563,7 +4000,7 @@
             {
               "conditions": [],
               "text": [
-                "First, I'm curious. Have you ever stopped smoking before?"
+                "Have you ever stopped smoking before?"
               ]
             }
           ],
@@ -3584,7 +4021,7 @@
                 ]
               ],
               "text": [
-                "Ok, you did stop for a while but unfortunately failed to succeed."
+                "So you already thought about it and tried before, that's already a first step."
               ]
             },
             {
@@ -3596,7 +4033,7 @@
                 ]
               ],
               "text": [
-                "That's a pity."
+                "Ok, imagine if you decided to..."
               ]
             },
             {
@@ -3693,12 +4130,24 @@
               "conditions": [
                 [
                   "params.stoppedBefore.longer1day",
-                  null,
-                  "!="
+                  true,
+                  "=="
                 ]
               ],
               "text": [
-                ""
+                "{{ params.stoppedBefore.stopDuration.frequency }}! That's not a small thing!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.longer1day",
+                  false,
+                  "=="
+                ]
+              ],
+              "text": [
+                "So it was quite hard for you, I can imagine that."
               ]
             },
             {
@@ -3726,8 +4175,21 @@
               "conditions": [
                 [
                   "params.stoppedBefore.longer1day",
-                  null,
-                  "!="
+                  true,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1302
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.longer1day",
+                  false,
+                  "=="
                 ]
               ],
               "trigger": [
@@ -3781,7 +4243,7 @@
                 ]
               ],
               "text": [
-                "Right, seems like you know the bad things smoking does to your heath."
+                "So you wanted to take care of your health, and that's why you tried to quit."
               ]
             },
             {
@@ -3793,7 +4255,7 @@
                 ]
               ],
               "text": [
-                "Smoking indeed costs a lot."
+                "So you wanted to take care of your finance, and that's why you tried to quit."
               ]
             },
             {
@@ -3810,7 +4272,7 @@
                 ]
               ],
               "text": [
-                "So you did realize that smoking is not a good thing."
+                ""
               ]
             }
           ],
@@ -3872,7 +4334,7 @@
             {
               "conditions": [],
               "text": [
-                "Since you have stopped for {{ params.stoppedBefore.stopDuration.number }} {{ params.stoppedBefore.stopDuration.frequency }} before, maybe you could do it again. I wonder, how did you quit? What methods did you use?"
+                "{{ params.stoppedBefore.stopDuration.frequency }} was probably not easy, so I wonder, how did you do that? What methods did you use?"
               ]
             }
           ],
@@ -3882,7 +4344,7 @@
             {
               "conditions": [],
               "text": [
-                "Thank you."
+                "{{ params.stoppedBefore.method-comment }} That's one thing that fits you the best."
               ]
             }
           ],
@@ -3891,7 +4353,109 @@
               "conditions": [],
               "trigger": [
                 "state",
+                1304
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1304,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Now let's revisit that and talk more about how you felt when you quit last time, if that's ok?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.stoppedBefore.feelings.confirm"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's certainly ok if you don't feel like talking about feelings."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                ""
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.confirm",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1309
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.confirm",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
                 1305
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.confirm",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1304
               ]
             }
           ],
@@ -3907,7 +4471,7 @@
             {
               "conditions": [],
               "text": [
-                "Tell me one positive feeling you had during those days."
+                "Tell me one positive feeling you had when you quit last time."
               ]
             }
           ],
@@ -3928,24 +4492,31 @@
                 ]
               ],
               "text": [
-                "{{ params.stoppedBefore.feelings.posOne-comment }} Right, living without cigarettes is not that bad. I think you should quit again."
+                "{{ params.stoppedBefore.feelings.posOne-comment }} Keeping away from cigarette did bring some good things to your life."
               ]
             },
             {
               "conditions": [
                 [
                   "params.stoppedBefore.feelings.posOne",
-                  null,
-                  "!="
-                ],
-                [
-                  "params.stoppedBefore.feelings.posOne",
-                  "positive",
-                  "!="
+                  "negative",
+                  "=="
                 ]
               ],
               "text": [
                 ""
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.posOne",
+                  "neutral",
+                  "=="
+                ]
+              ],
+              "text": [
+                "How did that make you feel?"
               ]
             },
             {
@@ -3979,18 +4550,26 @@
               "conditions": [
                 [
                   "params.stoppedBefore.feelings.posOne",
-                  null,
-                  "!="
-                ],
-                [
-                  "params.stoppedBefore.feelings.posOne",
-                  "positive",
-                  "!="
+                  "negative",
+                  "=="
                 ]
               ],
               "trigger": [
                 "state",
                 1307
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.posOne",
+                  "neutral",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1305
               ]
             },
             {
@@ -4019,7 +4598,7 @@
             {
               "conditions": [],
               "text": [
-                "Looking back from now, what else were you feeling?"
+                "Tell me more. Looking back now, what else were you feeling?"
               ]
             }
           ],
@@ -4040,24 +4619,31 @@
                 ]
               ],
               "text": [
-                "It was the right thing for you to do."
+                "Living without cigarette makes you feel good in some way."
               ]
             },
             {
               "conditions": [
                 [
                   "params.stoppedBefore.feelings.posTwo",
-                  null,
-                  "!="
-                ],
-                [
-                  "params.stoppedBefore.feelings.posTwo",
-                  "positive",
-                  "!="
+                  "negative",
+                  "=="
                 ]
               ],
               "text": [
-                "There are so many good things you can think of - better health, fresher breath, saving more money..."
+                ""
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.posTwo",
+                  "neutral",
+                  "=="
+                ]
+              ],
+              "text": [
+                "How did that make you feel?"
               ]
             },
             {
@@ -4084,6 +4670,19 @@
               ],
               "trigger": [
                 "state",
+                1308
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.posTwo",
+                  "negative",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
                 1307
               ]
             },
@@ -4091,18 +4690,13 @@
               "conditions": [
                 [
                   "params.stoppedBefore.feelings.posTwo",
-                  null,
-                  "!="
-                ],
-                [
-                  "params.stoppedBefore.feelings.posTwo",
-                  "positive",
-                  "!="
+                  "neutral",
+                  "=="
                 ]
               ],
               "trigger": [
                 "state",
-                1308
+                1306
               ]
             },
             {
@@ -4131,7 +4725,7 @@
             {
               "conditions": [],
               "text": [
-                "Why not try it again?"
+                "You had hard times, I can imagine. But you made it to {{ params.stoppedBefore.stopDuration.frequency }}! I wonder, are there things you can think of that remediated these feelings?"
               ]
             }
           ],
@@ -4141,7 +4735,7 @@
             {
               "conditions": [],
               "text": [
-                ""
+                "Thank you!"
               ]
             }
           ],
@@ -4169,42 +4763,42 @@
             {
               "conditions": [
                 [
-                  "params.stoppedBefore.feelings.posOne",
-                  "positive",
-                  "=="
-                ]
-              ],
-              "text": [
-                "What I'm hearing so far is that you've quit before, but failed to succeed. You did see some good things during those days, but they didn't stop you from going back to smoking again."
-              ]
-            },
-            {
-              "conditions": [
-                [
                   "params.stoppedBefore.feelings.posTwo",
                   "positive",
                   "=="
-                ]
-              ],
-              "text": [
-                "What I'm hearing so far is that you've quit before, but failed to succeed. You did see some good things during those days, but they didn't stop you from going back to smoking again."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stoppedBefore.feelings.posOne",
-                  "positive",
-                  "!="
                 ],
                 [
                   "params.stoppedBefore.feelings.posTwo",
                   "positive",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Let me summarize what I understood so far. You really cared about your {{ params.stoppedBefore.reason-comment }} and tried to stop smoking for that. You did it your way and you were feeling quite positive during those days."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.posOne",
+                  "positive",
                   "!="
                 ]
               ],
               "text": [
-                "What I'm hearing so far is that you've quit before, but unfortunately failed to succeed. You only felt suffering but didn't see the benefits quitting brings you."
+                "Let me summarize what I understood so far. You really cared about your {{ params.stoppedBefore.reason-comment }} and tried to stop smoking for that. You did it your way and you were feeling quite positive during those days."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.posTwo",
+                  "positive",
+                  "!="
+                ]
+              ],
+              "text": [
+                "Let me summarize what I understood so far. You really cared about your {{ params.stoppedBefore.reason-comment }} and tried to stop smoking for that. You did it your way and you were feeling quite positive during those days."
               ]
             }
           ],
@@ -4212,42 +4806,77 @@
             {
               "conditions": [
                 [
-                  "params.stoppedBefore.feelings.posOne",
-                  "positive",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1309
-              ]
-            },
-            {
-              "conditions": [
-                [
                   "params.stoppedBefore.feelings.posTwo",
                   "positive",
                   "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1309
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stoppedBefore.feelings.posOne",
-                  "positive",
-                  "!="
                 ],
                 [
                   "params.stoppedBefore.feelings.posTwo",
                   "positive",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1390
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.posOne",
+                  "positive",
                   "!="
                 ]
               ],
+              "trigger": [
+                "state",
+                1390
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stoppedBefore.feelings.posTwo",
+                  "positive",
+                  "!="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1390
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1390,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Something else?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                ""
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
               "trigger": [
                 "state",
                 1309
@@ -4266,14 +4895,14 @@
             {
               "conditions": [],
               "text": [
-                "You don't see the immediate consequences of smoking, but they influence your health slowly. Since you've quit before, do you think you can do it again? "
+                "Thanks for your sharing so far! I'm curious how you make sense of this experience, what you learned and what that means to you. Shall we go further and talk about that?"
               ]
             }
           ],
           "intents": [
             [
               "yes_no",
-              "params.stoppedBefore.again"
+              "params.stoppedBefore.goFurther"
             ]
           ],
           "entities": [],
@@ -4281,7 +4910,7 @@
             {
               "conditions": [
                 [
-                  "params.stoppedBefore.again",
+                  "params.stoppedBefore.goFurther",
                   "yes",
                   "=="
                 ]
@@ -4293,19 +4922,19 @@
             {
               "conditions": [
                 [
-                  "params.stoppedBefore.again",
+                  "params.stoppedBefore.goFurther",
                   "no",
                   "=="
                 ]
               ],
               "text": [
-                "I don't see why you can't, and you definitely should - you should learn from the past."
+                "That's ok. Thanks for the discussion!"
               ]
             },
             {
               "conditions": [
                 [
-                  "params.stoppedBefore.again",
+                  "params.stoppedBefore.goFurther",
                   null,
                   "=="
                 ]
@@ -4319,7 +4948,7 @@
             {
               "conditions": [
                 [
-                  "params.stoppedBefore.again",
+                  "params.stoppedBefore.goFurther",
                   "yes",
                   "=="
                 ]
@@ -4332,20 +4961,20 @@
             {
               "conditions": [
                 [
-                  "params.stoppedBefore.again",
+                  "params.stoppedBefore.goFurther",
                   "no",
                   "=="
                 ]
               ],
               "trigger": [
                 "state",
-                1310
+                1312
               ]
             },
             {
               "conditions": [
                 [
-                  "params.stoppedBefore.again",
+                  "params.stoppedBefore.goFurther",
                   null,
                   "=="
                 ]
@@ -4366,27 +4995,9 @@
           "conditions": [],
           "questions": [
             {
-              "conditions": [
-                [
-                  "params.stoppedBefore.again",
-                  "yes",
-                  "=="
-                ]
-              ],
+              "conditions": [],
               "text": [
-                "Ok, what would you say you learned from your last quit attempt?"
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stoppedBefore.again",
-                  "no",
-                  "=="
-                ]
-              ],
-              "text": [
-                "Tell me, if you see it as a learning experience, what would you say you learned from your last quit attempt?"
+                "Given what you know about yourself, tell me one strength of yours that helped you when you quit last time."
               ]
             }
           ],
@@ -4396,7 +5007,12 @@
               "params.stoppedBefore.strength.dontKnow"
             ]
           ],
-          "entities": [],
+          "entities": [
+            [
+              "user_input",
+              "params.stoppedBefore.strength.input"
+            ]
+          ],
           "responses": [
             {
               "conditions": [
@@ -4407,7 +5023,7 @@
                 ]
               ],
               "text": [
-                "Ok, that's something you should improve."
+                "{{ params.stoppedBefore.strength-comment }} That's something that could help you with challenges, nice brainstorming!"
               ]
             },
             {
@@ -4419,7 +5035,7 @@
                 ]
               ],
               "text": [
-                "There are many methods that help people quit. You could try nicotine replacement, counselling, medication is also possible. Some people also find going cold turkey helpful."
+                "One thing I noticed is that you're open to discuss previous quit experience, that's already a good start!"
               ]
             }
           ],
@@ -4459,14 +5075,21 @@
         {
           "id": 1311,
           "conditions": [],
-          "questions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "If you see it as a learning experience, what would you say you learned from your last quit?"
+              ]
+            }
+          ],
           "intents": [],
           "entities": [],
           "responses": [
             {
               "conditions": [],
               "text": [
-                "You just need to make your decision to quit, make a plan, and stick to it."
+                "Nice critical thinking! You're smart, critical, and you know your strength that could help you handle challenges."
               ]
             }
           ],
@@ -4491,7 +5114,7 @@
             {
               "conditions": [],
               "text": [
-                "Now let's talk about the plan. What would be your first step to quit?"
+                "Now, thinking about your last quit and if you were to try again, what might be the best way to try?"
               ]
             }
           ],
@@ -4512,7 +5135,7 @@
                 ]
               ],
               "text": [
-                ""
+                "{{ params.stopNext.bestWay-comment }} That's something that could help you quit."
               ]
             },
             {
@@ -4524,7 +5147,7 @@
                 ]
               ],
               "text": [
-                "Seems like you're not ready to have a quit plan. But that's really important for you to do."
+                "Remember that you told me that \"{{ params.stoppedBefore.strength.input }}\"? Maybe that could come in help."
               ]
             }
           ],
@@ -4538,8 +5161,8 @@
                 ]
               ],
               "trigger": [
-                "flow",
-                1515
+                "state",
+                1357
               ]
             },
             {
@@ -4552,7 +5175,7 @@
               ],
               "trigger": [
                 "state",
-                1358
+                1357
               ]
             }
           ],
@@ -4562,45 +5185,58 @@
           "actions": []
         },
         {
-          "id": 1358,
+          "id": 1357,
           "conditions": [],
           "questions": [
             {
               "conditions": [],
               "text": [
-                "These are what smokers find useful when they quit. Choose what you'd like to try: \n A ) Go cold turkey \n B ) Nicotine patch/gum \n C ) Counseling \n D ) Medication from doctors"
+                "Are you willing to give that a try?"
               ]
             }
           ],
-          "intents": [],
-          "entities": [],
-          "multipleChoice": [
-            "a,b,c,d",
-            "params.bestWay.choice"
+          "intents": [
+            [
+              "yes_no",
+              "params.stopNext.willing"
+            ]
           ],
+          "entities": [],
           "responses": [
             {
               "conditions": [
                 [
-                  "params.bestWay.choice",
-                  null,
-                  "!="
+                  "params.stopNext.willing",
+                  "yes",
+                  "=="
                 ]
               ],
               "text": [
-                ""
+                "Great! You know what could help you quit and you're ready to give it a try."
               ]
             },
             {
               "conditions": [
                 [
-                  "params.bestWay.choice",
+                  "params.stopNext.willing",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's ok if you're not ready."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopNext.willing",
                   null,
                   "=="
                 ]
               ],
               "text": [
-                "I couldn't catch that. Try again, and make sure you use one of the two letters to indicate your answer!"
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
               ]
             }
           ],
@@ -4608,31 +5244,196 @@
             {
               "conditions": [
                 [
-                  "params.bestWay.choice",
-                  null,
-                  "!="
+                  "params.stopNext.willing",
+                  "yes",
+                  "=="
                 ]
               ],
               "trigger": [
-                "flow",
-                1515
+                "state",
+                1314
               ]
             },
             {
               "conditions": [
                 [
-                  "params.bestWay.choice",
+                  "params.stopNext.willing",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1317
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopNext.willing",
                   null,
                   "=="
                 ]
               ],
               "trigger": [
                 "state",
-                1358
+                1357
               ]
             }
           ],
           "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1314,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What would be a first step?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "You've come up with a good start."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                1319
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1319,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "It's also helpful to set a start date. When would you like to quit?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [
+            [
+              "temporal_expression",
+              "params.stopNext.when"
+            ]
+          ],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.stopNext.when",
+                  null,
+                  "!="
+                ]
+              ],
+              "text": [
+                "Great! Now you have a good plan in hand! Good luck with that!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopNext.when",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.stopNext.when",
+                  null,
+                  "!="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1317
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopNext.when",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1319
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1317,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                "params.stopNext.willing",
+                "no",
+                "=="
+              ],
+              "text": [
+                "I'm very sure you can do this! Whenever you want to revisit this, my door is always open!"
+              ]
+            },
+            {
+              "conditions": [],
+              "text": [
+                "Alright, this is pretty much what I planned for our session today.",
+                "Thanks for the nice conversation and for sharing so much with me, {{ name }}!"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "flow",
+                9999
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
           "generators": [],
           "actions": []
         }
@@ -4651,470 +5452,7 @@
             {
               "conditions": [],
               "text": [
-                "Why didn't you?"
-              ]
-            }
-          ],
-          "intents": [
-            [
-              "quit_whynot",
-              "params.stopSmoking.whyNot"
-            ]
-          ],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "low-importance",
-                  "=="
-                ]
-              ],
-              "text": [
-                "You know, every cigarette counts. Smoking just one cigarette a day raises 40%-50% risk of heart issues and stroke."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "low-confidence",
-                  "=="
-                ]
-              ],
-              "text": [
-                "In 2020, more than 1/3 smokers made a serious quit attempt. I don't see why you can't."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "strong-need",
-                  "=="
-                ]
-              ],
-              "text": [
-                "You might think smoking helps relieve stress, but it's actually causing stress to your body - blood pressure and heart rate :up:, oxygen in your body :down:"
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  null,
-                  "=="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "low-importance",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1402
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "low-confidence",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1402
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "strong-need",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1402
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  null,
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1403
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 1402,
-          "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "low-importance",
-                  "=="
-                ]
-              ],
-              "text": [
-                "One-a-day won't keep the doctor away."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "low-confidence",
-                  "=="
-                ]
-              ],
-              "text": [
-                "You just need to make up your mind."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "strong-need",
-                  "=="
-                ]
-              ],
-              "text": [
-                "Try healthier ways to deal with stress."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  null,
-                  "=="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "low-importance",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1403
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "low-confidence",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1403
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  "strong-need",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1404
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.whyNot",
-                  null,
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1403
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 1404,
-          "conditions": [],
-          "questions": [
-            {
-              "conditions": [],
-              "text": [
-                "Pick one activities below that you'd like to do: \n A ) do some physical activities, \n B ) talk to a friend \n C ) have some fun (gardening, cooking, movie... something you enjoy doing), \n D ) ask for help."
-              ]
-            }
-          ],
-          "intents": [],
-          "entities": [],
-          "multipleChoice": [
-            "a,b,c,d",
-            "params.stopSmoking.activities"
-          ],
-          "responses": [
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.activities",
-                  null,
-                  "!="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.activities",
-                  null,
-                  "=="
-                ]
-              ],
-              "text": [
-                "I couldn't catch that. Try again, and make sure you use one of the two letters to indicate your answer!"
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.activities",
-                  null,
-                  "!="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1403
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.activities",
-                  null,
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1404
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 1403,
-          "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [
-                [
-                  "params.nicotineDependency",
-                  "low-dependence",
-                  "!="
-                ]
-              ],
-              "text": [
-                "Also, maybe you didn't see it, but our first assessment session shows that you have a {{ params.nicotineDependency-comment }} level of nicotine dependence, and that's not a good sign."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.nicotineDependency",
-                  "low-dependence",
-                  "=="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            [
-              "calculate_nicotine_dependency",
-              "params.nicotineDependency",
-              "pre"
-            ]
-          ],
-          "triggers": [
-            {
-              "conditions": [
-                [
-                  "params.nicotineDependency",
-                  "low-dependence",
-                  "!="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1405
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.nicotineDependency",
-                  "low-dependence",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1406
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": []
-        },
-        {
-          "id": 1405,
-          "conditions": [],
-          "questions": [
-            {
-              "conditions": [],
-              "text": [
-                "What do you think? \nPlease select: \n A ) I didn't know that \n B ) Good to know \n C ) I don't think it's that serious"
-              ]
-            }
-          ],
-          "intents": [],
-          "entities": [],
-          "multipleChoice": [
-            "a,b,c",
-            "params.stopSmoking.nicotine"
-          ],
-          "responses": [
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.nicotine",
-                  null,
-                  "!="
-                ]
-              ],
-              "text": [
-                "Nicotine dependent smokers are at more risk of lung and heart issues. Maybe you didn't realize this and didn't quit before, but now it's the time."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.nicotine",
-                  null,
-                  "=="
-                ]
-              ],
-              "text": [
-                "I couldn't catch that. Try again, and make sure you use one of the two letters to indicate your answer!"
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.nicotine",
-                  null,
-                  "!="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1406
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.nicotine",
-                  null,
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1405
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 1406,
-          "conditions": [],
-          "questions": [
-            {
-              "conditions": [],
-              "text": [
-                "Imagine if you decided to quit, how confident are you that you could quit? On a scale from 0-10, where 0 is not at all confident and 10 is extremely confident, where would you say you are?"
+                "How confident are you that you could quit? On a scale from 0 to 10, where 0 is not at all confident and 10 is extremely confident, where would you say you are?"
               ]
             }
           ],
@@ -5140,7 +5478,7 @@
                 ]
               ],
               "text": [
-                "Seems like you're not very confident in quitting."
+                "Seems like you're not very confident in quitting. How about this, not about quitting, but you tell me one time that you ultimately succeeded in doing something very difficult."
               ]
             },
             {
@@ -5152,24 +5490,12 @@
                 ],
                 [
                   "params.stopSmoking.confidence.number",
-                  9,
+                  10,
                   "<="
                 ]
               ],
               "text": [
-                "Seems like you're not 100% confident in yourself after all."
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.confidence.number",
-                  10,
-                  "=="
-                ]
-              ],
-              "text": [
-                "Tell me about it!"
+                ""
               ]
             },
             {
@@ -5225,7 +5551,7 @@
               ],
               "trigger": [
                 "state",
-                1407
+                1404
               ]
             },
             {
@@ -5237,26 +5563,13 @@
                 ],
                 [
                   "params.stopSmoking.confidence.number",
-                  9,
+                  10,
                   "<="
                 ]
               ],
               "trigger": [
                 "state",
-                1407
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.stopSmoking.confidence.number",
-                  10,
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1408
+                1402
               ]
             },
             {
@@ -5269,7 +5582,7 @@
               ],
               "trigger": [
                 "state",
-                1406
+                1401
               ]
             },
             {
@@ -5282,7 +5595,7 @@
               ],
               "trigger": [
                 "state",
-                1406
+                1401
               ]
             },
             {
@@ -5290,6 +5603,246 @@
                 [
                   "params.stopSmoking.confidence.number",
                   0,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1401
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1402,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Why are you at {{ params.stopSmoking.confidence.number }} and not lower? Tell me one strength of yours that makes you confident in this."
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [
+            [
+              "user_input",
+              "params.stopSmoking.confidence.input"
+            ]
+          ],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "{{ params.stoppedBefore.strength-comment }} That's something that could help you with challenges."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                1403
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1403,
+          "conditions": [],
+          "questions": [],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Speaking of challenges, let's think of a moment in time when you ultimately succeeded in doing something very difficult."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                1404
+              ]
+            }
+          ],
+          "type": "monologue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1404,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What was the task? What did you have to do?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                ""
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                1405
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1405,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "How did you ultimately succeed?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thank you. That's one thing that helps you go through challenging times."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                1406
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1406,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Now let's revisit that and talk more about how you felt, if that's ok?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.succeededTask.consent"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.consent",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                ""
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.consent",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's certainly ok if you don't feel like talking about feelings. "
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.consent",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.consent",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1407
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.consent",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1409
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.consent",
+                  null,
                   "=="
                 ]
               ],
@@ -5311,187 +5864,51 @@
             {
               "conditions": [],
               "text": [
-                "There are many effective approaches that are popular with quitters. Choose one of the below that you'd like to try.: \n A ) Go cold turkey \n B ) Nicotine patch/gum \n C ) Counseling \n D ) Medication from doctors \n E ) None of them. I'll go my own way."
+                "How did that challenge make you feel?"
               ]
             }
           ],
-          "intents": [],
-          "entities": [],
-          "multipleChoice": [
-            "a,b,c,d,e",
-            "params.bestWay.choice"
-          ],
-          "responses": [
-            {
-              "conditions": [
-                [
-                  "params.bestWay.choice",
-                  null,
-                  "!="
-                ],
-                [
-                  "params.bestWay.choice",
-                  "e",
-                  "!="
-                ]
-              ],
-              "text": [
-                ""
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.bestWay.choice",
-                  "e",
-                  "=="
-                ]
-              ],
-              "text": [
-                "Ok, tell me about it"
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.bestWay.choice",
-                  null,
-                  "=="
-                ]
-              ],
-              "text": [
-                "I couldn't catch that. Try again, and make sure you use one of the two letters to indicate your answer!"
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [
-                [
-                  "params.bestWay.choice",
-                  null,
-                  "!="
-                ],
-                [
-                  "params.bestWay.choice",
-                  "e",
-                  "!="
-                ]
-              ],
-              "trigger": [
-                "flow",
-                1515
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.bestWay.choice",
-                  "e",
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1408
-              ]
-            },
-            {
-              "conditions": [
-                [
-                  "params.bestWay.choice",
-                  null,
-                  "=="
-                ]
-              ],
-              "trigger": [
-                "state",
-                1407
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 1408,
-          "conditions": [],
-          "questions": [
-            {
-              "conditions": [],
-              "text": [
-                "What's your strategy?"
-              ]
-            }
-          ],
-          "intents": [],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [],
-              "text": [
-                "That's something that works for you."
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [],
-              "trigger": [
-                "flow",
-                1515
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        }
-      ]
-    },
-    {
-      "id": 1515,
-      "title": "goodbye",
-      "description": "Goodbye messages to end the conversation",
-      "conditions": [],
-      "states": [
-        {
-          "id": 1551,
-          "conditions": [],
-          "questions": [
-            {
-              "conditions": [],
-              "text": [
-                "Next, you should set a quit date. When do you want to start {{ params.bestWay.choice-comment }}?"
-              ]
-            }
-          ],
-          "intents": [],
-          "entities": [
+          "intents": [
             [
-              "temporal_expression",
-              "params.stopNext.when"
+              "sentiment",
+              "params.succeededTask.feeling"
             ]
           ],
+          "entities": [],
           "responses": [
             {
               "conditions": [
                 [
-                  "params.stopNext.when",
-                  null,
-                  "!="
+                  "params.succeededTask.feeling",
+                  "positive",
+                  "=="
                 ]
               ],
               "text": [
-                "Now you have a plan in hand! I hope you will stick to it. Good luck!"
+                "{{ params.stoppedBefore.feelings.posOne-comment }} You deal with challenges pretty well."
               ]
             },
             {
               "conditions": [
                 [
-                  "params.stopNext.when",
+                  "params.succeededTask.feeling",
+                  null,
+                  "!="
+                ],
+                [
+                  "params.succeededTask.feeling",
+                  "positive",
+                  "!="
+                ]
+              ],
+              "text": [
+                "You had hard times, I can imagine. But you managed to succeed in the end!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.feeling",
                   null,
                   "=="
                 ]
@@ -5505,27 +5922,45 @@
             {
               "conditions": [
                 [
-                  "params.stopNext.when",
-                  null,
-                  "!="
+                  "params.succeededTask.feeling",
+                  "positive",
+                  "=="
                 ]
               ],
               "trigger": [
                 "state",
-                1501
+                1409
               ]
             },
             {
               "conditions": [
                 [
-                  "params.stopNext.when",
+                  "params.succeededTask.feeling",
+                  null,
+                  "!="
+                ],
+                [
+                  "params.succeededTask.feeling",
+                  "positive",
+                  "!="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1408
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.feeling",
                   null,
                   "=="
                 ]
               ],
               "trigger": [
                 "state",
-                1551
+                1407
               ]
             }
           ],
@@ -5535,16 +5970,23 @@
           "actions": []
         },
         {
-          "id": 1501,
+          "id": 1408,
           "conditions": [],
-          "questions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "I wonder, is there something you can think of that remediated these feelings?"
+              ]
+            }
+          ],
           "intents": [],
           "entities": [],
           "responses": [
             {
               "conditions": [],
               "text": [
-                "Alright, this is pretty much what I planned for our session today."
+                ""
               ]
             }
           ],
@@ -5553,7 +5995,7 @@
               "conditions": [],
               "trigger": [
                 "state",
-                1502
+                1409
               ]
             }
           ],
@@ -5563,7 +6005,664 @@
           "actions": []
         },
         {
-          "id": 1502,
+          "id": 1409,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Thanks for your sharing so far! I'm curious how you make sense of this experience, what you learned and what that means. Shall we go further and talk about that?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.succeededTask.goFurther"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.goFurther",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "You told me \"{{ params.stopSmoking.confidence.input }}\""
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.goFurther",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That's ok. I'm wondering..."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.goFurther",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.goFurther",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1410
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.goFurther",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1411
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.succeededTask.goFurther",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1409
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1410,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "What else do you think is important during this challenge?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "Thank you. That's something that helps you change."
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                1411
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1411,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Looking back at this experience, considering your skills and strength, would you be more confident in making another change -- stop smoking?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.stopSmoking.confidence.more"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.confidence.more",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                ""
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.confidence.more",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Well, I'm very confident! From what you just shared with me, I think if you make up your mind, you can definitely get it done."
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.confidence.more",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.confidence.more",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1412
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.confidence.more",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1412
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.confidence.more",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1411
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1412,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "Would you like to give it a try?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.stopSmoking.try"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.try",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Great!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.try",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That is ok if you're not ready. I just want to say that I really believe you can do that, and my door is always open if you ever want to revisit this!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.try",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.try",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1413
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.try",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1417
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.try",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1412
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1413,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "We could make a plan together that works the best for you, if you'd like to?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.stopSmoking.plan"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.plan",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "Good!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.plan",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "That is ok if you're not ready. I just want to say that I really believe you can do that, and my door is always open if you ever want to revisit this!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.plan",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.plan",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1475
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.plan",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1417
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.plan",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1413
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1475,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "There are many approaches that help people quit, but you know yourself the best. Do you already have an idea how you can quit?"
+              ]
+            }
+          ],
+          "intents": [
+            [
+              "yes_no",
+              "params.stopSmoking.approach"
+            ]
+          ],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.approach",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "text": [
+                "You've come up with a good start!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.approach",
+                  "no",
+                  "=="
+                ]
+              ],
+              "text": [
+                "I do know some popular methods, if you'd like to know?"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.approach",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.approach",
+                  "yes",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1415
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.approach",
+                  "no",
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1416
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.approach",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1475
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1416,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "These are what smokers find useful when they quit. Any of them looks useful for you? \n - go cold turkey; \n - nicotine patch/gum; \n - counseling; \n - medication from doctors. \n - I will go my own way"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [],
+          "responses": [
+            {
+              "conditions": [],
+              "text": [
+                "OK!"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [],
+              "trigger": [
+                "state",
+                1415
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1415,
+          "conditions": [],
+          "questions": [
+            {
+              "conditions": [],
+              "text": [
+                "It's also helpful to set a start date. When would you like to quit?"
+              ]
+            }
+          ],
+          "intents": [],
+          "entities": [
+            [
+              "temporal_expression",
+              "params.stopSmoking.when"
+            ]
+          ],
+          "responses": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.when",
+                  null,
+                  "!="
+                ]
+              ],
+              "text": [
+                "Great! Now you have a good plan in hand! Good luck with that!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.when",
+                  null,
+                  "=="
+                ]
+              ],
+              "text": [
+                "I'm sorry, I didn't get that. Could you rephrase what you just said?"
+              ]
+            }
+          ],
+          "triggers": [
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.when",
+                  null,
+                  "!="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1417
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "params.stopSmoking.when",
+                  null,
+                  "=="
+                ]
+              ],
+              "trigger": [
+                "state",
+                1415
+              ]
+            }
+          ],
+          "type": "dialogue",
+          "multipleChoice": [],
+          "generators": [],
+          "actions": []
+        },
+        {
+          "id": 1417,
           "conditions": [],
           "questions": [],
           "intents": [],
@@ -5572,6 +6671,7 @@
             {
               "conditions": [],
               "text": [
+                "Alright, this is pretty much what I planned for our session today.",
                 "Thanks for the nice conversation and for sharing so much with me, {{ name }}!"
               ]
             }
@@ -5585,7 +6685,7 @@
               ]
             }
           ],
-          "type": "dialogue",
+          "type": "monologue",
           "multipleChoice": [],
           "generators": [],
           "actions": []
@@ -5608,34 +6708,7 @@
             {
               "conditions": [],
               "text": [
-                "You can now close me (the tab of this webpage) and go back to the questionnaire page."
-              ]
-            }
-          ],
-          "triggers": [
-            {
-              "conditions": [],
-              "trigger": [
-                "state",
-                9911
-              ]
-            }
-          ],
-          "type": "dialogue",
-          "multipleChoice": [],
-          "generators": [],
-          "actions": []
-        },
-        {
-          "id": 9911,
-          "conditions": [],
-          "questions": [],
-          "intents": [],
-          "entities": [],
-          "responses": [
-            {
-              "conditions": [],
-              "text": [
+                "You can now close me (the tab of this webpage) and go back to the questionnaire page.",
                 "You will be asked for a code to receive your credit, and your code is 2336."
               ]
             }
@@ -5649,7 +6722,7 @@
               ]
             }
           ],
-          "type": "dialogue",
+          "type": "monologue",
           "multipleChoice": [],
           "generators": [],
           "actions": []
@@ -5718,7 +6791,34 @@
                 ],
                 [
                   "progress.flow.past",
-                  1515,
+                  1313,
+                  "in"
+                ],
+                [
+                  "progress.flow.past",
+                  9999,
+                  "in"
+                ]
+              ],
+              "text": [
+                "Hello again {{ name }}! We have already had our sessions. I will see you in my next prototype!"
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "progress.onhold.is",
+                  false,
+                  "=="
+                ],
+                [
+                  "progress.flow.past",
+                  3737,
+                  "in"
+                ],
+                [
+                  "progress.flow.past",
+                  1414,
                   "in"
                 ],
                 [
@@ -5807,7 +6907,35 @@
                 ],
                 [
                   "progress.flow.past",
-                  1515,
+                  1313,
+                  "in"
+                ],
+                [
+                  "progress.flow.past",
+                  9999,
+                  "in"
+                ]
+              ],
+              "trigger": [
+                "flow",
+                10000
+              ]
+            },
+            {
+              "conditions": [
+                [
+                  "progress.onhold.is",
+                  false,
+                  "=="
+                ],
+                [
+                  "progress.flow.past",
+                  3737,
+                  "in"
+                ],
+                [
+                  "progress.flow.past",
+                  1414,
                   "in"
                 ],
                 [
@@ -5840,7 +6968,7 @@
               ]
             }
           ],
-          "type": "dialogue",
+          "type": "monologue",
           "multipleChoice": [],
           "generators": []
         }
